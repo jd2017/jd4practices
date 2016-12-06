@@ -22,7 +22,12 @@ import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
 import net.sf.json.JSONObject;
-
+/**
+ * 
+ * @author jd.bai
+ * @date 2016年12月6日
+ * @time 下午5:15:27
+ */
 public class HttpJSONObjectRequestUtil {
 	static Logger logger = Logger.getLogger(HttpJSONObjectRequestUtil.class.getName());
 	/** 
