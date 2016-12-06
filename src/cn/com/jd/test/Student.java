@@ -1,7 +1,6 @@
 package cn.com.jd.test;
 
 import java.util.Arrays;
-import java.util.Date;
 /**
  * 
  * @author jd.bai
