@@ -2,7 +2,12 @@ package cn.com.jd.test;
 
 import java.util.Arrays;
 import java.util.Date;
-
+/**
+ * 
+ * @author jd.bai
+ * @date 2016年12月6日
+ * @time 下午4:42:33
+ */
 public class Student {
 	private int age;
 	private String name;
