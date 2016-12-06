@@ -1,2 +1,2 @@
 # jd4practices
-httpClient test , algorithme and data structures practices;
+httpClient test , algorithms and data structures practices;
