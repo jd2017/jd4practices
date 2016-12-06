@@ -1,7 +1,6 @@
 package cn.com.jd.alog2struc.algorithms;
 
 /**
- * 
  * @author jd.bai
  * @date 2016年12月2日
  * @time 下午4:43:30
