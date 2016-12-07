@@ -1,30 +1,79 @@
 package cn.com.jd.alog2struc.algorithms;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+
+import org.junit.Test;
+
 /**
  * @author jd.bai
  * @date 2016年12月2日
  * @time 下午4:43:30
+ * 	简单排序：冒泡、选择、插入排序
  */
 public class SortDemo {
+	
+//	String filePath = (SortDemo.class.getResource(".").getPath()+"sortfile.txt");
+	long[] array= {12,234,34,54,65,76,234,87,0,4,3,3,3400,00,1213123,923,33,343,54};
+	int nElems = array.length;
+	
+	@Test
+	public void test(){
+	
+		/**
+		 *  insertSort(array,nElems);	//39021
+		 	bubbleSort(array,nElems);	//44896
+			selectSort(array,nElems);  //74932
+		*/
+		selectSort();
+		outArray();
+	}
+	/*
+	 * 插入排序：对于基本有序的数据来说，插入排序比较快（因为while总是假），逆序排序的数据效率低；比较和移动都会执行；
+	 * 		取出一个标示对象；跟其他对象比较；将大的插入取出对象的位置；
+	 * 	比较次数：(N-1)+(N-2)+...=N*(N-1)/2
+	 */
+	public void insertSort(){
+		int in ,out;
+		for(out = 1; out < nElems; out++){
+			long temp = array[out];
+			in = out;
+			while(in>0 && array[in-1] >= temp ){
+				array[in] = array[in-1];
+				in--;
+			}
+			array[in] = temp;
+		}
+	}
 	 /*
-	  * 简单排序：冒泡、选择
+	  * 选择排序： 交换次数比较少，当N较小时，交换的时间比计较的时间级大的多时，选择排序比较快；
+	  *		从左边开始(固定角标)，比较剩下的所有的对象；较小的关键字被重复发现；若左边大，则交换位置，依次类推；
+	  * 比较次数：(N-1)+(N-2)+...=N*(N-1)/2
 	  */
-	 private  long[] array= {11,9,13,1,19,13,100,89,0};
-	 int nElem = array.length;
-	 public  void bubbleSort(){
-		for(int in = nElem-1;in > 0; in--){
-			for(int j =0; j<in; j++){
-				if(array[j]>array[j+1]){
-					swap(j,j+1);
-				}
+	 public void selectSort(){
+		for(int out = 0; out<nElems; out++){
+			for(int in=out+1;in<nElems;in++){
+				if(array[out]>array[in])
+					swap(out,in);
 			}
 		}
 	 }
-	 public void selectSort(){
-		for(int min = 0;min<nElem-1; min++){
-			for(int max=min+1;max<nElem;max++){
-				if(array[min]>array[max])
-					swap(min,max);
+	/*
+	 *	冒泡排序： 交换比较多；
+	 *		从左边开始(角标右移)，比较相邻两个的值，若左边大，则交换位置，继续比较下两个值；
+	 * 	比较次数：(N-1)+(N-2)+...=N*(N-1)/2
+	 */
+	public  void bubbleSort(){
+		for(int out = nElems-1; out>0; out--){
+			for(int in =0; in<out; in++){
+				if(array[in]>array[in+1]){
+					swap(in,in+1);
+				}
 			}
 		}
 	 }
@@ -34,8 +83,46 @@ public class SortDemo {
 		 array[two] = temp;
 	 }
 	 public  void outArray(){
-		 for(int i=0; i<nElem; i++){
-				System.out.println(array[i]);
-			}
+		 for(int i = 0 ;i<nElems;i++){
+			 System.out.print(array[i]+",");
+		 }
 	 }
+	 /**
+	     * 功能：Java读取txt文件的内容
+	     * 步骤：1：先获得文件句柄
+	     * 2：获得文件句柄当做是输入一个字节码流，需要对这个输入流进行读取
+	     * 3：读取到输入流后，需要读取生成字节流
+	     * 4：一行一行的输出。readline()。
+	     * 备注：需要考虑的是异常情况
+	     * @param filePath
+	     */
+	    public  long[] readTxtFile(String filePath){
+	        try {
+	                String encoding="UTF-8";
+	                File file=new File(filePath);
+	                if(file.isFile() && file.exists()){ //判断文件是否存在
+	                    InputStreamReader read = new InputStreamReader(
+	                    new FileInputStream(file),encoding);//考虑到编码格式
+	                    BufferedReader bufferedReader = new BufferedReader(read);
+	                    StringBuilder sb = new StringBuilder();
+	                    String lineTxt = null;
+	                    while((lineTxt = bufferedReader.readLine()) != null){
+	                        sb.append(lineTxt);
+	                    }
+	                    String[] strArrary = sb.toString().split(",");
+	                    long[] array = new long[strArrary.length];
+	                    for(int i=0;i<strArrary.length;i++){	
+	                    	array[i]=Integer.parseInt(strArrary[i]);
+	                    }
+	                    read.close();
+	                    return array;
+	        }else{
+	            System.out.println("找不到指定的文件");
+	        }
+	        } catch (Exception e) {
+	            System.out.println("读取文件内容出错");
+	            e.printStackTrace();
+	        }
+			return null;
+	    }
 }
