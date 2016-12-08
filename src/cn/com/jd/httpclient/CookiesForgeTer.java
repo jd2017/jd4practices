@@ -37,7 +37,7 @@ public class CookiesForgeTer{
 	@SuppressWarnings("deprecation")
 	private static BasicClientCookie setCookies(String name,String value,String date){ 
         BasicClientCookie2 cookie = new BasicClientCookie2(name,value); 
-        cookie.setDomain("218.247.224.31"); 
+        cookie.setDomain("10.23.211.68"); 
         cookie.setPath("/"); 
         if (StringUtils.isNotBlank(date)) { 
             cookie.setExpiryDate(new Date(date)); 

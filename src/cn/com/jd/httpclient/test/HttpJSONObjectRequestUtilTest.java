@@ -12,7 +12,7 @@ public class HttpJSONObjectRequestUtilTest {
 	
 	@Test
     public  void getRequestTest() {
-        String url = "http://218.247.224.31/xcgj-ws/ws/0.1/debug/push?userId=1&catageoryKey=105&type=5";  
+        String url = "http://10.23.211.68/xcgj-ws/ws/0.1/debug/push?userId=1&catageoryKey=105&type=5";  
         JSONObject jsonObject = HttpJSONObjectRequestUtil.httpGet(url);  
         if(jsonObject != null) {  
             String userName = (String) jsonObject.get("message");  
@@ -22,7 +22,7 @@ public class HttpJSONObjectRequestUtilTest {
         	logger.info("http Get request process fail");  
         }  
     }  
-  @Test
+	@Test
     public  void postRequestTest() {  
     	 String url = "http://10.23.211.68/xcgj-app-ws/ws/0.1/oAuth/login";  
     	 User user = new User();  
@@ -46,5 +46,10 @@ public class HttpJSONObjectRequestUtilTest {
         }else {  
         	logger.info("http Post request process fail");  
         }  
-    }  
+    }
+	@Test
+	 public  void imeiAndPerson(){
+		
+	}
+  
 }
