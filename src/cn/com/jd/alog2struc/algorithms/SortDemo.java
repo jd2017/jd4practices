@@ -19,22 +19,31 @@ import org.junit.Test;
 public class SortDemo {
 	
 //	String filePath = (SortDemo.class.getResource(".").getPath()+"sortfile.txt");
-	long[] array= {12,234,34,54,65,76,234,87,0,4,3,3,3400,00,1213123,923,33,343,54};
+	long[] array= {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34};
 	int nElems = array.length;
 	
 	@Test
 	public void test(){
+//		StringBuilder sb = new StringBuilder();
+//		for(int i=1000;i>0;i--){
+//			sb.append(i+",");
+//		}
+//		System.out.println(sb.toString());
 	
 		/**
 		 *  insertSort(array,nElems);	//39021
 		 	bubbleSort(array,nElems);	//44896
 			selectSort(array,nElems);  //74932
 		*/
-		selectSort();
+		long startTime = System.currentTimeMillis();
+			bubbleSort();
+		long endTime = System.currentTimeMillis();
+		System.out.println(endTime-startTime);
 		outArray();
 	}
 	/*
 	 * 插入排序：对于基本有序的数据来说，插入排序比较快（因为while总是假），逆序排序的数据效率低；比较和移动都会执行；
+	 * 		复制是交换的3倍；
 	 * 		取出一个标示对象；跟其他对象比较；将大的插入取出对象的位置；
 	 * 	比较次数：(N-1)+(N-2)+...=N*(N-1)/2
 	 */
