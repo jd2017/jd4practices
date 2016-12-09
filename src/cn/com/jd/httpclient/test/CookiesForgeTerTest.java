@@ -35,6 +35,7 @@ public class CookiesForgeTerTest {
 	 * app端显示语言：
 	 *	clientId:5450080dd95948abc4a6e330dc93d0ad
 	 *	en-US、zh-CN
+	 * 控制推送语言信息；
 	 */
 	@Test
 	public void changeLanguage(){
@@ -42,11 +43,11 @@ public class CookiesForgeTerTest {
 		User user =new User();
 		user.setClientId("5450080dd95948abc4a6e330dc93d0ad");
 		user.setClientType("0");
-		user.setLanguage("en-US");
+		user.setLanguage("zh-CN");
 		
 		JSONObject jsonParam = JSONObject.fromObject(user);
 		JSONObject responseJSONObject = CookiesForgeTer.httpPostAndCookies(url, jsonParam,true);
-		  if(responseJSONObject !=null && "200".equals(responseJSONObject.get("status"))){ 
+		  if("200".equals(responseJSONObject.get("status"))){ 
 			  System.out.println("success");
 		  }else{
 			  System.out.println("fail");
@@ -101,9 +102,10 @@ public class CookiesForgeTerTest {
 	public void remindSwitch(){
 		String url = "http://10.23.211.68/xcgj-app-ws/ws/0.1/monitor/setting/remind/switch";
 		Map<String,String> map = new HashMap<String,String>();
-		map.put("remindSwitch", "false");
+		map.put("remindSwitch", "true");
 		JSONObject jsonParam = JSONObject.fromObject(map);
 		JSONObject response = CookiesForgeTer.httpPostAndCookies(url, jsonParam, true);
+		System.out.println(response);
 		
 	}
 }
