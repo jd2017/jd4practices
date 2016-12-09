@@ -5,6 +5,8 @@ import java.util.logging.Logger;
 import org.junit.Test;
 
 import net.sf.json.JSONObject;
+import cn.com.jd.httpclient.CookiesForgeTer;
+import cn.com.jd.httpclient.HttpClientUtil;
 import cn.com.jd.httpclient.HttpJSONObjectRequestUtil;
 
 public class HttpJSONObjectRequestUtilTest {
@@ -47,9 +49,4 @@ public class HttpJSONObjectRequestUtilTest {
         	logger.info("http Post request process fail");  
         }  
     }
-	@Test
-	 public  void imeiAndPerson(){
-		
-	}
-  
 }

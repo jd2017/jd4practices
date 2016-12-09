@@ -19,6 +19,7 @@ import org.apache.commons.httpclient.Header;
  * @author jd.bai
  * @date 2016年12月5日
  * @time 下午2:13:48
+ * @Http 字符串的 get/post 请求方式；
  */
 public class HttpClientUtil {
 	static Logger logger = Logger.getLogger(HttpClientUtil.class.getName());

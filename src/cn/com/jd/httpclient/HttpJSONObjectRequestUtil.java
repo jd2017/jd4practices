@@ -14,11 +14,14 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HTTP;
+import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.EntityUtils;
 
 import net.sf.json.JSONObject;
@@ -27,6 +30,7 @@ import net.sf.json.JSONObject;
  * @author jd.bai
  * @date 2016年12月6日
  * @time 下午5:15:27
+ * @JSONObject get/post请求；
  */
 public class HttpJSONObjectRequestUtil {
 	static Logger logger = Logger.getLogger(HttpJSONObjectRequestUtil.class.getName());
@@ -43,18 +47,18 @@ public class HttpJSONObjectRequestUtil {
 		
         JSONObject jsonResult = null;  
         try {   
-            //发送get请求  
-            HttpGet httpGet = new HttpGet(url);
-            CloseableHttpResponse getResponse = httpClient.execute(httpGet,context);
+        	//发送get请求  
+        	HttpGet httpGet = new HttpGet(url);
+        	CloseableHttpResponse response = httpClient.execute(httpGet,context);
             
             /**请求发送成功，并得到响应**/  
-            if (getResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {  
+            if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {  
                 /**读取服务器返回过来的json字符串数据**/  
-                String strResult = EntityUtils.toString(getResponse.getEntity());
+                String strResult = EntityUtils.toString(response.getEntity());
                 if(strResult.equals("")){
                 	//getResponse 状态码为200，非json对象时；
 					Map<String, String> status = new HashedMap();
-                	status.put("status", "SUCCESS");
+                	status.put("status", "200");
                 	jsonResult = JSONObject.fromObject(status);
                 	return jsonResult; 
                 }
@@ -62,7 +66,7 @@ public class HttpJSONObjectRequestUtil {
                 jsonResult = JSONObject.fromObject(strResult);
 //              url = URLDecoder.decode(url, "UTF-8");
             } else {  
-            	logger.info("get请求提交失败:" + url);  
+            	logger.info("get请求提交失败:" + url+"HttpStatus:"+response.getStatusLine().getStatusCode());  
             }  
         } catch (IOException e) {  
         	logger.info("get请求提交失败:" + url);
@@ -128,7 +132,7 @@ public class HttpJSONObjectRequestUtil {
             	new HttpException("返回状态码Status："+statusCode);
             }
         } catch (IOException e) {  
-        	System.out.println("post请求提交失败:" + url+"请检查URL链接及数据提交方式");
+        	logger.info("post请求提交失败:" + url+"请检查URL链接及数据提交方式");
         	e.printStackTrace();
         }  
         return jsonResult;  
