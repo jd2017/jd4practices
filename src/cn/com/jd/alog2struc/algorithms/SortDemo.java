@@ -105,7 +105,7 @@ public class SortDemo {
 	     * 备注：需要考虑的是异常情况
 	     * @param filePath
 	     */
-	    public  long[] readTxtFile(String filePath){
+	    public  String readTxtFile(String filePath){
 	        try {
 	                String encoding="UTF-8";
 	                File file=new File(filePath);
@@ -118,13 +118,8 @@ public class SortDemo {
 	                    while((lineTxt = bufferedReader.readLine()) != null){
 	                        sb.append(lineTxt);
 	                    }
-	                    String[] strArrary = sb.toString().split(",");
-	                    long[] array = new long[strArrary.length];
-	                    for(int i=0;i<strArrary.length;i++){	
-	                    	array[i]=Integer.parseInt(strArrary[i]);
-	                    }
 	                    read.close();
-	                    return array;
+	                    return sb.toString();
 	        }else{
 	            System.out.println("找不到指定的文件");
 	        }
@@ -133,5 +128,14 @@ public class SortDemo {
 	            e.printStackTrace();
 	        }
 			return null;
+	    }
+	    //将字符串按照指定规则转化为数组；
+	    public long[] reverArray(String str){
+	    	String[] strArrary = str.split(",");
+            long[] array = new long[strArrary.length];
+            for(int i=0;i<strArrary.length;i++){	
+            	array[i]=Integer.parseInt(strArrary[i]);
+            }
+	    	return array;
 	    }
 }
