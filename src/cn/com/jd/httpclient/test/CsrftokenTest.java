@@ -1,20 +1,25 @@
 package cn.com.jd.httpclient.test;
 
 import java.util.logging.Logger;
+
 import net.sf.json.JSONObject;
+
 import org.junit.Test;
+
+import cn.com.jd.alog2struc.algorithms.SortDemo;
 import cn.com.jd.httpclient.Csrftoken;
 import cn.com.jd.httpclient.HttpJSONObjectRequestUtil;
 
 public class CsrftokenTest {
 	static Logger logger = Logger.getLogger(CsrftokenTest.class.getName());
+	String host =  new SortDemo().readTxtFile(this.getClass().getResource(".").getPath()+"host.txt");
 	/**
 	 * Post JSONObject 获取Cookies 值；
 	 */
 	@Test
 	public void logginJSON() {
 
-		String url = "http://10.23.211.68/xcgj-app-ws/ws/0.1/oAuth/login";
+		String url = "http://"+host+"/xcgj-app-ws/ws/0.1/oAuth/login";
 		User user = new User();
 		user.setCountryCode("86");
 		user.setUsername("18833330000");
@@ -33,7 +38,7 @@ public class CsrftokenTest {
 	}
 	@Test
 	public void pushRequst(){
-		String url = "http://10.23.211.68/xcgj-ws/ws/0.1/debug/push?userId=1&catageoryKey=101&type=1";
+		String url = "http://"+host+"/xcgj-ws/ws/0.1/debug/push?userId=1&catageoryKey=101&type=1";
 		String cookie = Csrftoken.getCsrfTokenAndCookie(url);
 		System.out.println(cookie);
 	}

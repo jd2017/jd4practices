@@ -3,11 +3,17 @@ package cn.com.jd.httpclient;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URLDecoder;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.text.spi.DateFormatProvider;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
+
+import javax.swing.text.DateFormatter;
 
 import net.sf.json.JSONObject;
 
@@ -16,6 +22,7 @@ import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.time.DateFormatUtils;
 import org.apache.http.HttpException;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -46,23 +53,29 @@ import org.apache.http.util.EntityUtils;
  */
 public class CookiesForgeTer {
 	static Logger logger = Logger.getLogger(CookiesForgeTer.class.getName());
-
-	@SuppressWarnings("deprecation")
+	static String host = "10.23.211.68";
+	
 	private static BasicClientCookie setCookies(String name, String value,
-			String date) {
+			String date){
 		BasicClientCookie2 cookie = new BasicClientCookie2(name, value);
-		cookie.setDomain("10.23.211.68");
+		cookie.setDomain(host);
 		cookie.setPath("/");
 		if (StringUtils.isNotBlank(date)) {
-			cookie.setExpiryDate(new Date(date));
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			Date time;
+			try {
+				time = sdf.parse(date);
+				cookie.setExpiryDate(time);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 		} else {
 			cookie.setExpiryDate(null);
 		}
 		return cookie;
 	}
-
-	@SuppressWarnings("deprecation")
-	public static void doHttpRequest(String url) {
+	@Deprecated
+	public static void getHttpRequest(String url) {
 		DefaultHttpClient httpClient = new DefaultHttpClient();
 		httpClient.getParams().setParameter("http.protocol.cookie-policy",
 				CookiePolicy.BROWSER_COMPATIBILITY);
@@ -100,17 +113,17 @@ public class CookiesForgeTer {
 
 	/**
 	 * doGetRequest 优化
-	 * 
+	 * time: 添加的日期要大于当前日期；
 	 * @param url
 	 */
-	public static void doHttpRequest1(String url) {
+	public static void getdoHttpRequest(String url) {
 		// HttpClientContext context = HttpClientContext.create();
 		CloseableHttpClient httpClient = HttpClients.createDefault();
 		// 设置cookies
 		HttpContext localContext = new BasicHttpContext();
 		BasicCookieStore cookieStore = new BasicCookieStore();
 		cookieStore.addCookie(setCookies("autofunCookie",
-				"a48086b7-34c9-48c3-a5b6-6873277497a0", null)); // ok
+				"2a2c643a-900c-439a-8f5e-118cd3268bbd", "2016-12-10")); // ok
 		localContext.setAttribute(HttpClientContext.COOKIE_STORE, cookieStore);
 		HttpGet method = new HttpGet(url);
 		try {
@@ -131,9 +144,10 @@ public class CookiesForgeTer {
 
 	/**
 	 * 添加登录缓存的JSONObject 请求；
+	 * time: 添加的日期要大于当前日期；
 	 * 
 	 */
-	public static JSONObject httpPostAndCookies(String url,
+	public static JSONObject postJSONRequest(String url,
 			JSONObject jsonParam, boolean noNeedResponse) {
 		CloseableHttpClient httpClient = HttpClients.createDefault();
 		JSONObject jsonResult = null;
@@ -147,20 +161,18 @@ public class CookiesForgeTer {
 				entity.setContentType("application/json");
 				method.setEntity(entity);
 			}
+			logger.info("json对象：" + jsonParam + "\nurl:" + url);
+
 			// 设置cookie内容；
 			HttpContext localContext = new BasicHttpContext();
 			BasicCookieStore cookieStore = new BasicCookieStore();
 			cookieStore.addCookie(setCookies("autofunCookie",
-					"a48086b7-34c9-48c3-a5b6-6873277497a0", null)); // ok
+					"2a2c643a-900c-439a-8f5e-118cd3268bbd", "2016-12-12")); // ok
 			localContext.setAttribute(HttpClientContext.COOKIE_STORE,
 					cookieStore);
 			// 将cookies添加到 请求中去；
 			CloseableHttpResponse responseResult = httpClient.execute(method,
 					localContext);
-
-			url = URLDecoder.decode(url, "UTF-8");
-			logger.info("json对象：" + jsonParam + "\nurl:" + url);
-
 			int statusCode = responseResult.getStatusLine().getStatusCode();
 			String strResult = "";
 			/** 请求发送成功，并得到响应 **/

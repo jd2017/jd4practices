@@ -6,11 +6,14 @@ import java.util.logging.Logger;
 
 import org.junit.Test;
 
+import cn.com.jd.alog2struc.algorithms.SortDemo;
 import cn.com.jd.httpclient.HttpClientUtil;
 
 public class HttpClientUtilTest {
 	static Logger logger = Logger.getLogger(HttpClientUtilTest.class.getName());
-	/*
+	String host =  new SortDemo().readTxtFile(this.getClass().getResource(".").getPath()+"host.txt");
+	
+	/**
 	 * autofun app 接口推送测试；
 	 */
 	@Test
@@ -43,8 +46,7 @@ public class HttpClientUtilTest {
 	}
     public void getRequestTest(int catageoryKey,int index) {  
 //    	int catageoryKey,int ...index
-			String url = "http://10.23.211.68/xcgj-ws/ws/0.1/debug/push?userId=1&catageoryKey=10"+catageoryKey+"&type="+index;
-//		String url = "http://10.23.211.68/xcgj-ws/ws/0.1/debug/push?userId=1&catageoryKey=101&type=1";
+			String url = "http://"+host+"/xcgj-ws/ws/0.1/debug/push?userId=1&catageoryKey=10"+catageoryKey+"&type="+index;
 //        http://10.23.211.68/xcgj-ws/ws/0.1/debug/push?userId=1&catageoryKey=105&type=5
         try {  
             String str = HttpClientUtil.doGet2(url, "UTF-8");  
@@ -59,7 +61,6 @@ public class HttpClientUtilTest {
     }  
     @Test
     public  void getRequestTest2() {  
-//    	http://10.23.211.68/xcgj-ws/ws/0.1/debug/push?userId=1&catageoryKey=105&type=5
         String url = "http://www.baidu.com";  
         try {  
             String str = HttpClientUtil.doGet2(url, "UTF-8");  
@@ -75,7 +76,7 @@ public class HttpClientUtilTest {
     // post 发送get请求测试； fail 请求方式不对
     @Test
     public void test3(){
-    	String url = "http://10.23.211.68/xcgj-ws/ws/0.1/debug/push";
+    	String url = "http://"+host+"/xcgj-ws/ws/0.1/debug/push";
     	Map<String, Object> _params = new HashMap<String, Object>();  
         _params.put("userId", "1");  
         _params.put("catageoryKey", "10");
@@ -91,7 +92,7 @@ public class HttpClientUtilTest {
     @Test
     public  void postRequestTest() {  
   
-        String url = "http://10.23.211.68/xcgj-app-ws/ws/0.1/oAuth/login";  
+        String url = "http://"+host+"/xcgj-app-ws/ws/0.1/oAuth/login";  
   
         Map<String, Object> _params = new HashMap<String, Object>();  
         _params.put("countryCode", "86");  
