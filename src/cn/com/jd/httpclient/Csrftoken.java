@@ -29,6 +29,7 @@ import cn.com.jd.httpclient.test.HttpJSONObjectRequestUtilTest;
  * @author jd.bai
  * @date 2016年12月5日
  * @time 下午2:13:37
+ * @cookies: 获取目标cookies信息 及 遍历cookies信息
  */
 public class Csrftoken {
 	static Logger logger = Logger.getLogger(Csrftoken.class.getName());
@@ -87,7 +88,6 @@ public class Csrftoken {
 	            
 	            url = URLDecoder.decode(url, "UTF-8");          
 	            logger.info("json对象："+jsonParam+"\nurl:"+url+"\n");
-	            //
 	            CookieStore cookieStore = context.getCookieStore();
 	    		List<Cookie> cookies = cookieStore.getCookies();
 	    		Iterator<Cookie> cookiesItr = cookies.iterator();
@@ -100,32 +100,27 @@ public class Csrftoken {
 	    				logger.info("Cookie:autofunCookie="+autofunCookie);
 	    			}
 	    		}
-	    		httpResponse.close();
-	            
 	            /**请求发送成功，并得到响应**/  
 	            if (httpResponse.getStatusLine().getStatusCode() == 200) {  
 	                String strResult = "";  
 	                try {  
 	                    /**读取服务器返回过来的json字符串数据**/  
 	                	strResult = EntityUtils.toString(httpResponse.getEntity(),"UTF-8"); 
-	                    if(strResult.equals("")){
-	                    	//response 返回非空，状态码为200，非json数据时；
-	                    	@SuppressWarnings("unchecked")
-							Map<String, String> status = new HashedMap();
-	                    	status.put("status", "200");
-	                    	jsonResult = JSONObject.fromObject(status);
-	                    }else{
-	                    	/**把json字符串转换成json对象**/  
-	                    	jsonResult = JSONObject.fromObject(strResult);
-	                    }
-	                    if (noNeedResponse) {  
-	                        return null;  
-	                    }
+	                    if (noNeedResponse) {
+	                		//response 返回非空，状态码为200，非json数据时；
+	                		 Map<String, String> status = new HashedMap();
+	                     	status.put("status", "200");
+	                     	jsonResult = JSONObject.fromObject(status);
+	                         return jsonResult;  
+	                     }
+	                    /**把json字符串转换成json对象**/  
+	                    jsonResult = JSONObject.fromObject(strResult);
 	                } catch (Exception e) {  
 	                	logger.info("post请求提交失败:" + url);
 	                	e.printStackTrace();
 	                }  
-	            }  
+	            }
+	            httpResponse.close();
 	        } catch (IOException e) {  
 	        	logger.info("post请求提交失败:" + url);
 	        	e.printStackTrace();

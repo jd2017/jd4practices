@@ -11,6 +11,28 @@ public class User {
 	private String countryCode;
 	private String username;
 	private String password;
+	private String clientId;
+	
+	public String getClientId() {
+		return clientId;
+	}
+	public void setClientId(String clientId) {
+		this.clientId = clientId;
+	}
+	public String getClientType() {
+		return clientType;
+	}
+	public void setClientType(String clientType) {
+		this.clientType = clientType;
+	}
+	public String getLanguage() {
+		return language;
+	}
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+	private String clientType;
+	private String language;
 	
 	public String getCountryCode() {
 		return countryCode;
