@@ -39,7 +39,7 @@ public class HttpJSONObjectRequestUtilTest {
 
         JSONObject responseJSONObject = HttpJSONObjectRequestUtil.httpPost(url, jsonParam,true); 
         
-        if(responseJSONObject !=null && "200".equals(responseJSONObject.get("status"))){  
+        if("200".equals(responseJSONObject.get("status"))){  
             JSONObject userStr = (JSONObject) responseJSONObject.get("user");  
             user = (User) JSONObject.toBean(userStr, User.class);  
               
