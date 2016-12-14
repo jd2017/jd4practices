@@ -59,7 +59,7 @@ public class Csrftoken {
 				Cookie cookieImp = cookiesItr.next();
 				logger.info("cookies:"+cookieImp.toString());
 				// 获取目标cookie
-				if (cookieImp.getName().equalsIgnoreCase("autofunCookie")) {
+				if (cookieImp.getName().equalsIgnoreCase("autofunCookie")) {		//cdtAppOrMicroCookie  autofunCookie
 					cookie = cookieImp.getValue();
 				}
 			}
@@ -115,10 +115,10 @@ public class Csrftoken {
 			// 遍历Cookies；
 			while (cookiesItr.hasNext()) {
 				Cookie cookieImp = cookiesItr.next();
-				logger.info("Cookies列表:" + cookieImp.toString());
+				logger.info("Cookies列表:" + cookieImp.toString()); //[name: cdtAppOrMicroCookie][value: c2dfde34-4b15-49f5-af41-0b1b4a56b7f8]
 				if (cookieImp.getName().equalsIgnoreCase("autofunCookie")) {
 					String autofunCookie = cookieImp.getValue();
-					logger.info("目标Cookie:autofunCookie=" + autofunCookie);
+					logger.info("目标Cookie:autofunCookie=" + autofunCookie);  //cdtAppOrMicroCookie  autofunCookie
 				}
 			}
 			// 获取的返回的状态码；

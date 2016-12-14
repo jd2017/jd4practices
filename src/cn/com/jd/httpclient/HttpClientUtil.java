@@ -49,7 +49,6 @@ public class HttpClientUtil {
 					"application/x-www-form-urlencoded; charset=" + "utf-8");
 		}
 		int statusCode = client.executeMethod(method);
-
 		if (statusCode != HttpStatus.SC_OK) {// 打印服务器返回的状态
 			logger.info("Method failed: " + method.getStatusLine());
 		}
@@ -58,7 +57,7 @@ public class HttpClientUtil {
 				method.getResponseCharSet());
 		// 在返回响应消息使用编码(utf-8或gb2312)
 		String response = new String(responseBody, "utf-8");
-		logger.info("--------response:" + response);
+		logger.info("response:" + response);
 		// 释放连接
 		method.releaseConnection();
 		return response;
