@@ -53,7 +53,7 @@ import org.apache.http.util.EntityUtils;
  */
 public class CookiesForgeTer {
 	static Logger logger = Logger.getLogger(CookiesForgeTer.class.getName());
-	static String host = "10.23.211.68";
+	static String host = "10.23.211.68"; // 10.23.3.31 10.23.211.68
 	
 	private static BasicClientCookie setCookies(String name, String value,
 			String date){
@@ -123,7 +123,7 @@ public class CookiesForgeTer {
 		HttpContext localContext = new BasicHttpContext();
 		BasicCookieStore cookieStore = new BasicCookieStore();
 		cookieStore.addCookie(setCookies("autofunCookie",
-				"2a2c643a-900c-439a-8f5e-118cd3268bbd", "2016-12-10")); // ok
+				"a48086b7-34c9-48c3-a5b6-6873277497a0", "2016-12-14")); //[name: cdtAppOrMicroCookie][value: c2dfde34-4b15-49f5-af41-0b1b4a56b7f8]
 		localContext.setAttribute(HttpClientContext.COOKIE_STORE, cookieStore);
 		HttpGet method = new HttpGet(url);
 		try {
@@ -145,6 +145,7 @@ public class CookiesForgeTer {
 	/**
 	 * 添加登录缓存的JSONObject 请求；
 	 * time: 添加的日期要大于当前日期；
+	 * noNeedResponse 不需要返回json数据
 	 * 
 	 */
 	public static JSONObject postJSONRequest(String url,
@@ -167,7 +168,7 @@ public class CookiesForgeTer {
 			HttpContext localContext = new BasicHttpContext();
 			BasicCookieStore cookieStore = new BasicCookieStore();
 			cookieStore.addCookie(setCookies("autofunCookie",
-					"2a2c643a-900c-439a-8f5e-118cd3268bbd", "2016-12-12")); // ok
+					"a48086b7-34c9-48c3-a5b6-6873277497a0", "2016-12-14")); // ok[name: cdtAppOrMicroCookie][value: c2dfde34-4b15-49f5-af41-0b1b4a56b7f8]
 			localContext.setAttribute(HttpClientContext.COOKIE_STORE,
 					cookieStore);
 			// 将cookies添加到 请求中去；

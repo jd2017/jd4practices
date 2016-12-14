@@ -58,9 +58,28 @@ public class HttpClientUtilTest {
         } catch (Exception e) {  
             e.printStackTrace();  
         }  
-    }  
+    }
+    /**
+     * 获取最新活动信息
+     */
     @Test
     public  void getRequestTest2() {  
+        String url = "http://"+host+"/xcgj-app-ws/ws/0.1/activity";  
+        String str;
+		try {
+			str = HttpClientUtil.doGet1(url, "UTF-8");
+			if (str != null) {  
+	        	logger.info("http Get request result:" + str);  
+	        } else {  
+	        	logger.info("http Get request process fail");  
+	        }  
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  
+    }
+    @Test
+    public  void getRequestTest() {  
         String url = "http://www.baidu.com";  
         try {  
             String str = HttpClientUtil.doGet2(url, "UTF-8");  
@@ -88,7 +107,7 @@ public class HttpClientUtilTest {
         	logger.info("http Post request process fail");  
         }  
     }
-    //post request;  数据封装错误
+    //post request;  请求数据格式错误
     @Test
     public  void postRequestTest() {  
   
