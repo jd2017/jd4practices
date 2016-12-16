@@ -149,7 +149,7 @@ public class CookiesForgeTerTest {
 	 */
 	@Test
 	public void getUser(){
-		String url = "http://"+host+"/xcgj-app-ws/ws/0.1/user";
+		String url = "http://10.23.3.31/xcgj-app-ws/ws/0.1/user";
 		CookiesForgeTer.getdoHttpRequest(url);
 	}
 	/**
