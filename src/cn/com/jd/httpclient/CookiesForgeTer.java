@@ -53,7 +53,7 @@ import org.apache.http.util.EntityUtils;
  */
 public class CookiesForgeTer {
 	static Logger logger = Logger.getLogger(CookiesForgeTer.class.getName());
-	static String host = "10.23.211.68"; // 10.23.3.31 10.23.211.68
+	static String host = "10.23.3.31"; // 10.23.3.31 10.23.211.68
 	
 	private static BasicClientCookie setCookies(String name, String value,
 			String date){
@@ -122,8 +122,8 @@ public class CookiesForgeTer {
 		// 设置cookies
 		HttpContext localContext = new BasicHttpContext();
 		BasicCookieStore cookieStore = new BasicCookieStore();
-		cookieStore.addCookie(setCookies("autofunCookie",
-				"a48086b7-34c9-48c3-a5b6-6873277497a0", "2016-12-14")); //[name: cdtAppOrMicroCookie][value: c2dfde34-4b15-49f5-af41-0b1b4a56b7f8]
+		cookieStore.addCookie(setCookies("cdtAppOrMicroCookie",
+				"df5f3ece-4710-4759-a71b-4c4a5d0cd8b9", "2016-12-15")); //[name: cdtAppOrMicroCookie][value: c2dfde34-4b15-49f5-af41-0b1b4a56b7f8]
 		localContext.setAttribute(HttpClientContext.COOKIE_STORE, cookieStore);
 		HttpGet method = new HttpGet(url);
 		try {
@@ -133,7 +133,7 @@ public class CookiesForgeTer {
 				logger.info("执行结果返回值："
 						+ EntityUtils.toString(response.getEntity(), "utf-8"));
 			else
-				logger.info("HttpStatus:"
+				logger.info("执行结果返回值："+ EntityUtils.toString(response.getEntity())+"HttpStatus:"
 						+ response.getStatusLine().getStatusCode());
 		} catch (Exception e) {
 			logger.info("发生异常：" + e);
