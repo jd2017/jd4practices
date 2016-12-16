@@ -36,7 +36,9 @@ public class HttpClientUtilTest {
 					getRequestTest(i, j);
 				break;
 			case 5:
-				getRequestTest(i, 5);
+				for(int j=1;j<=8;j++)
+					getRequestTest(i, j);
+//				getRequestTest(i, 5);
 				break;
 			default:
 				System.out.println("no find,over");
@@ -46,7 +48,7 @@ public class HttpClientUtilTest {
 	}
     public void getRequestTest(int catageoryKey,int index) {  
 //    	int catageoryKey,int ...index
-			String url = "http://"+host+"/xcgj-ws/ws/0.1/debug/push?userId=1&catageoryKey=10"+catageoryKey+"&type="+index;
+			String url = "http://"+host+"/xcgj-ws/ws/0.1/debug/push?userId=2651&catageoryKey=10"+catageoryKey+"&type="+index;
 //        http://10.23.211.68/xcgj-ws/ws/0.1/debug/push?userId=1&catageoryKey=105&type=5
         try {  
             String str = HttpClientUtil.doGet2(url, "UTF-8");  
