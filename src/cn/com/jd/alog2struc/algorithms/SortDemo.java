@@ -42,9 +42,9 @@ public class SortDemo {
 		outArray();
 	}
 	/*
-	 * 插入排序：对于正序的数据来说，插入排序比较快（因为while总是假），逆序排序的数据效率低；比较和移动都会执行；
-	 * 		复制是交换的3倍；
-	 * 		取出一个标示对象；跟其他对象比较；将大的插入取出对象的位置；
+	 * 插入排序：复制的次数大致等于比较的次数，一次复制与一次交换的时间不同，复制是交换的3倍；
+	 * 		对于数据有序的情况下，插入排序比较快（因为while总是假），逆序排序的数据效率低；比较和移动都会执行；
+	 * 		取出一个标示对象；跟其他对象比较；将目标值插入指定位置；
 	 * 	比较次数：(N-1)+(N-2)+...=N*(N-1)/2
 	 */
 	public void insertSort(){
@@ -60,7 +60,7 @@ public class SortDemo {
 		}
 	}
 	 /*
-	  * 选择排序： 交换次数比较少，当N较小时，交换的时间比计较的时间级大的多时，选择排序比较快；
+	  * 选择排序：比冒泡排序比较，交换次数比较少，当N较小时，交换的时间级比比较的时间级大的多时，选择排序比较快；
 	  *		从左边开始(固定角标)，比较剩下的所有的对象, 找出最小的坐标值后，交换一次值，依次类推；
 	  * 比较次数：(N-1)+(N-2)+...=N*(N-1)/2
 	  */
@@ -75,20 +75,20 @@ public class SortDemo {
 			swap(min,out);
 		}
 	 }
-	/*
-	 *	冒泡排序： 交换比较多；
-	 *		从左边开始(角标右移)，比较相邻两个的值，若左边大，则交换位置，继续比较下两个值；
-	 * 	比较次数：(N-1)+(N-2)+...=N*(N-1)/2
-	 */
-	public  void bubbleSort(){
-		for(int out = nElems-1; out>0; out--){
-			for(int in =0; in<out; in++){
-				if(array[in]>array[in+1]){
-					swap(in,in+1);
+		/*
+		 *	冒泡排序： 交换比较多；
+		 *		从左边开始(角标右移)，比较相邻两个的值，若左边大，则交换位置，继续比较下两个值；
+		 * 	比较次数：(N-1)+(N-2)+...=N*(N-1)/2
+		 */
+		public  void bubbleSort(){
+			for(int out = nElems-1; out>0; out--){
+				for(int in =0; in<out; in++){
+					if(array[in]>array[in+1]){
+						swap(in,in+1);
+					}
 				}
 			}
-		}
-	 }
+		 }
 	 public void swap(int one, int two){
 		 long temp = array[one];
 		 array[one] = array[two];
