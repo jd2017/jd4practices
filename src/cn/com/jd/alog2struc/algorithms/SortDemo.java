@@ -36,13 +36,13 @@ public class SortDemo {
 			selectSort(array,nElems);  //74932
 		*/
 		long startTime = System.currentTimeMillis();
-			bubbleSort();
+			selectSort();
 		long endTime = System.currentTimeMillis();
 		System.out.println(endTime-startTime);
 		outArray();
 	}
 	/*
-	 * 插入排序：对于基本有序的数据来说，插入排序比较快（因为while总是假），逆序排序的数据效率低；比较和移动都会执行；
+	 * 插入排序：对于正序的数据来说，插入排序比较快（因为while总是假），逆序排序的数据效率低；比较和移动都会执行；
 	 * 		复制是交换的3倍；
 	 * 		取出一个标示对象；跟其他对象比较；将大的插入取出对象的位置；
 	 * 	比较次数：(N-1)+(N-2)+...=N*(N-1)/2
@@ -61,15 +61,18 @@ public class SortDemo {
 	}
 	 /*
 	  * 选择排序： 交换次数比较少，当N较小时，交换的时间比计较的时间级大的多时，选择排序比较快；
-	  *		从左边开始(固定角标)，比较剩下的所有的对象；较小的关键字被重复发现；若左边大，则交换位置，依次类推；
+	  *		从左边开始(固定角标)，比较剩下的所有的对象, 找出最小的坐标值后，交换一次值，依次类推；
 	  * 比较次数：(N-1)+(N-2)+...=N*(N-1)/2
 	  */
 	 public void selectSort(){
-		for(int out = 0; out<nElems; out++){
+		 int min, out;
+		for( out= 0; out<nElems; out++){
+			min = out;
 			for(int in=out+1;in<nElems;in++){
 				if(array[out]>array[in])
-					swap(out,in);
+					min = in;
 			}
+			swap(min,out);
 		}
 	 }
 	/*
