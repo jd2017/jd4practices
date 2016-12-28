@@ -1,4 +1,4 @@
-package cn.com.jd.test;
+package cn.com.jd.javabase.domain;
 
 import java.util.Arrays;
 /**
