@@ -1,76 +1,200 @@
-Reader:
-用于读取字符流的抽象类。
-直接已知子类：
-	BufferedReader, CharArrayReader, FilterReader, InputStreamReader, PipedReader, StringReader 
+System:
+	类包含一些有用的类字段和方法。它不能被实例化。 
+字段摘要 
+static PrintStream err 
+          “标准”错误输出流。 
+static InputStream in 
+          “标准”输入流。 
+static PrintStream out 
+          “标准”输出流。 
 
-abstract  void close() 
-          关闭该流并释放与之关联的所有资源。 
- void mark(int readAheadLimit) 
-          标记流中的当前位置。 
- boolean markSupported() 
-          判断此流是否支持 mark() 操作。 
- int read() 
-          读取单个字符。 
- int read(char[] cbuf) 
-          将字符读入数组。 
-abstract  int read(char[] cbuf, int off, int len) 
-          将字符读入数组的某一部分。 
- int read(CharBuffer target) 
-          试图将字符读入指定的字符缓冲区。 
- boolean ready() 
-          判断是否准备读取此流。 
- void reset() 
-          重置该流。 
- long skip(long n) 
-          跳过字符。 
+static long currentTimeMillis() 
+          返回以毫秒为单位的当前时间。 
+static void exit(int status) 
+          终止当前正在运行的 Java 虚拟机。 
+static void gc() 
+          运行垃圾回收器。 
+static Properties getProperties() 
+          确定当前的系统属性。 
+static String getProperty(String key) 
+          获取指定键指示的系统属性。 
+static void setIn(InputStream in) 
+          重新分配“标准”输入流。 
+static void setOut(PrintStream out) 
+          重新分配“标准”输出流。 
+static void setProperties(Properties props) 
+          将系统属性设置为 Properties 参数 
 
-类 FileReader:
-用来读取字符文件的便捷类。此类的构造方法假定默认字符编码和默认字节缓冲区大小都是适当的。
-要自己指定这些值，可以先在 FileInputStream 上构造一个 InputStreamReader。 
+InputStreamReader:  是字节流通向字符流的桥梁  
+	InputStreamReader(InputStream in)
+	InputStreamReader(InputStream in, String charsetName) 
+          创建使用指定字符集的 InputStreamReader。
+OutputStreamWriter: 是字符流通向字节流的桥梁 
+	OutputStreamWriter(OutputStream out) 
+	OutputStreamWriter(OutputStream out, String charsetName) 
+          创建使用指定字符集的 OutputStreamWriter。
+/*
+1,源，键盘录入。
+  目的：控制台
+2，需求：想把键盘录入的数据存储到一个文件中。
+  源：键盘
+  目的：文件
+3，需求：想要将一个文件的数据打印到控制台上。
+   源：文件。
+   目的：控制台。
+*/
 
-FileReader(File file) 
-          在给定从中读取数据的 File 的情况下创建一个新 FileReader。 
-FileReader(FileDescriptor fd) 
-          在给定从中读取数据的 FileDescriptor 的情况下创建一个新 FileReader。 
-FileReader(String fileName) 
-          在给定从中读取数据的文件名的情况下创建一个新 FileReader。 
+流操作的基本规律：
+通过三个明确来完成。
 
+1，明确源和目的。
+	源：输入流。 InputStream Reader
+	目的：输出流。OutputStream Writer
+2，操作的数目是否是纯文本。
+	是：字符流。FileReader	FileWriter
+	否：字节流  FileIntputStream  FileOutputStream
+3，当体系明确后，再明确要使用哪个具体的对象。
+	通过设备来区分：
+	源设备：内存，硬盘，键盘。
+	目的设备：内存，硬盘，控制台。
 
+是否需要缓冲区：BufferedReader  BufferedWriter
+****************************************************************
+扩展：想要录入数据按照指定的码表(UTF-8)，存入到文件中。
 
-public class FileReaderDemo {
-	private static void readerChar() {
-		FileReader fr=null;
-		try{
-			fr=new FileReader("D://Workspaces//src//Demo.txt");
+目的：OutputStream  Writer。
+是否是纯文本？ 是！ Writer。
+设备: 硬盘。一个文件，使用FileWriter。
+但是FileWriter 使用的默认码表。GBK。
+
+但是存储时，需要添加码表UTF-8。
+所以使用的转换流对象是  OutputStreamWriter。
+而该转换流对象接受一个 字节输出流。而且可以操作文件的字节流。FileOutputStream。
+
+OutputStreamWriter osw =new OutputStreamWriter(new FileOutputStream("fil.txt"),"UTF-8");
+需要高效吗？需要。
+BufferedWriter bw=new BufferedWriter(osw);
+
+转换流的使用：
+	字符和字节之间的桥梁。涉及到字符编码时，通常需要用到转换流。
+
+public class SystemIODemo {
+	public static void main(String[] args) throws IOException {
+		OutputStreamWriterMethod();	
+	}
+	/* 输出输出流，为何统一编码UTF-8，打印出乱码？*/
+	private static void OutputStreamWriterMethod() throws IOException{
 		
-			//记录读取单个字符
-			int num=0;
-			while((num=fr.read())!=-1)
-				System.out.println((char)num);
-		}catch(Exception e){
-			e.printStackTrace();
+		//System.setIn(new FileInputStream("file.txt"));
+		//System.setOut(new PrintStream("file.txt"));
+		//字节流 转换为字符流
+		InputStreamReader isr=new InputStreamReader(System.in);//new FileInputStream("fil.txt"),"utf-8"
+		BufferedReader br=
+				new BufferedReader(isr);
+		//字符流 转换为字节流
+		OutputStreamWriter osw=
+				new OutputStreamWriter(new FileOutputStream("fil.txt"),"UTF-8");//new FileOutputStream("fil.txt"),"UTF-8"
+		BufferedWriter bw=
+				new BufferedWriter(osw);
+		
+		String len=null;
+		while((len=br.readLine())!=null){
+			bw.write(len);
+			if("over".equals(len))
+				break;
+			bw.newLine();
+			bw.flush();
 		}
-		finally{
-			try{
-				if(fr!=null)
-					fr.close();
-			}catch(Exception e){
-				e.printStackTrace();
+		br.close();
+		bw.close();	
+	}
+	
+	private static void InputStreamReaderDemo() throws IOException {
+		/*//获取键盘录入对象。
+		InputStream in=System.in;
+		//将字节流对象转成字符流对象，使用转换流。InputStreamReader
+		InputStreamReader is=new InputStreamReader(in);
+		//为了提高效率，将字符串进行缓冲区技术高效操作。使用BufferedReader
+		BufferedReader br=new BufferedReader(is);*/
+		
+		BufferedReader br=
+				new BufferedReader(new InputStreamReader(System.in));
+		
+		/*
+		OutputStream out=System.out;		
+		OutputStreamWriter osw=new OutputStreamWriter(out);
+		BufferedWriter bw=new BufferedWriter(osw);*/
+		
+		BufferedWriter bw=
+				new BufferedWriter(new OutputStreamWriter(System.out));
+		
+		String len=null;
+		while((len=br.readLine())!=null)
+		{
+			if("over".equals(len))
+				break;
+			bw.write(len.toUpperCase());
+			bw.newLine();		//换行，操作。
+			bw.flush();			//刷新缓冲区数据
+		}
+	}
+	private static void systemIn() throws IOException {
+		InputStream in=System.in;
+		int num=0;
+	
+		StringBuilder sb=new StringBuilder();
+		while(true)
+		{
+			
+			num=in.read();
+			if(num=='\r')
+				continue;
+			if(num=='\n'){
+				String s=sb.toString();	
+				if("over".equals(s))
+					break;
+				System.out.println(s.toUpperCase());
+				sb.delete(0,s.length());			//清空容器
+			}
+			else{
+				sb.append((char)num);			//存储字节
 			}
 		}
 	}
-	private static void readerChars() throws Exception{
-		FileReader fr=null;
-		fr=new FileReader("D://Workspaces//src//Caculator.java");
-		//定义一个字符 容器数组 ，存储读取后的字符
-		char[] chs=new char[4];
-		//读取的字符个数。
-		int num=0;		
-		while((num=fr.read(chs))!=-1)
-			System.out.print(new String(chs,0,num));//最好不要换行，否则超过容器后就会换行。
-		fr.close();
+}
+---------------------------------------------------------------------------------------
+类 Properties
+	Properties 类表示了一个持久的属性集。
+
+ String getProperty(String key) 
+          用指定的键在此属性列表中搜索属性 
+ void list(PrintStream out) 
+          将属性列表输出到指定的输出流。
+	  
+public class ExceptionSystem {
+	public static void main(String[] args) throws IOException {		
+		systemInfo();
 	}
-	public static void main(String[] args) throws Exception {
-		readerChars();
+	private static void systemInfo() throws FileNotFoundException {
+		Properties pro=System.getProperties();
+		System.out.println(pro);
+		//
+		pro.list(System.out);
+		pro.list(new PrintStream("systeminfo.log"));
+	}
+	private static void exceptionMethod() throws FileNotFoundException {
+		try{
+			int arr[]={1,2,3};
+			System.out.println(arr[5]);
+		}catch(Exception e)
+		{
+			Date d=new Date();
+			PrintStream ps=new PrintStream("exception.log");
+			SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd E HH:mm:ss a");
+			String date=sdf.format(d);
+			
+			ps.println(date);			
+			e.printStackTrace(ps);
+		}
 	}
 }
