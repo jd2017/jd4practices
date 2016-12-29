@@ -19,7 +19,7 @@ public class CsrftokenTest {
 	@Test
 	public void logginJSON() {
 
-		String url = "http://"+host+"/xcgj-app-ws/ws/0.1/user/login"; //oAuth/login
+		String url = "http://10.23.3.31/xcgj-app-ws/ws/0.1/user/login"; //oAuth/login
 		User user = new User();
 //		user.setCountryCode("86");
 		user.setUsername("18888888888");
