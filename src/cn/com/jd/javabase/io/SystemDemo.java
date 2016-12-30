@@ -1,22 +1,62 @@
 package cn.com.jd.javabase.io;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map.Entry;
 import java.util.Properties;
+
 import org.junit.Test;
 
 public class SystemDemo {
 	String path=System.getProperty("user.dir")+File.separator+"filetest";
 	@Test
-	public void main() throws FileNotFoundException{
-		exceptionMethod();
+	public void main(){
+		load();
+	}
+	/**
+	 * Properties 类
+		表示了一个持久的属性集。Properties 可保存在流中或从流中加载。属性列表中每个键及其对应值都是一个字符串。 
+		Properties  是Hashtable 的子类，也就是说，它具备map集合的特点，它里面存的键值对都是字符串。
+		
+		数据存储到集合中。
+	 * 需求：将info.txt中的键值对 数据存到集合中操作。
+	 * 1，用一个流 和 info.txt 文件关联。
+	 * 2，读取一行数据，将改行数据用"="进行切割。
+	 * 3，等号左边 为键，右边为 值。 存入Properties集合中。
+	 */
+	public  void load(){
+		FileInputStream fis;
+		try {
+			fis = new FileInputStream(path+File.separator+"info.txt");
+			Properties prop=new Properties();
+			//数据加进集合
+			prop.load(fis);
+			System.out.println(prop);
+			//打印到控制台
+			prop.list(System.out);
+			
+			//改变的是内存信息
+			prop.setProperty("zhangsan", 34+"");
+//			System.out.println(prop);
+			
+			//改变硬盘信息时：
+			FileOutputStream fos=new FileOutputStream(path+File.separator+"info.txt");
+			prop.store(fos,"xiaoju");
+			System.out.println(prop);
+			fos.close();
+			fis.close();	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 	/*
 	 * 实现一个功能，记录运行次数，
