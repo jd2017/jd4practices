@@ -104,7 +104,6 @@ public class StreamDemo {
 		
 		BufferedReader reader=
 				new BufferedReader(new InputStreamReader(System.in));
-		
 		/*
 		OutputStream out=System.out;		
 		OutputStreamWriter osw=new OutputStreamWriter(out);

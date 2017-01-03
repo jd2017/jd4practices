@@ -123,7 +123,7 @@ public class CookiesForgeTer {
 		HttpContext localContext = new BasicHttpContext();
 		BasicCookieStore cookieStore = new BasicCookieStore();
 		cookieStore.addCookie(setCookies("cdtAppOrMicroCookie",
-				"df5f3ece-4710-4759-a71b-4c4a5d0cd8b9", "2016-12-15")); //[name: cdtAppOrMicroCookie][value: c2dfde34-4b15-49f5-af41-0b1b4a56b7f8]
+				"73565ada-d455-4f1b-8fa7-2993511baf49", "2016-12-31")); //[name: cdtAppOrMicroCookie][value: c2dfde34-4b15-49f5-af41-0b1b4a56b7f8]
 		localContext.setAttribute(HttpClientContext.COOKIE_STORE, cookieStore);
 		HttpGet method = new HttpGet(url);
 		try {
