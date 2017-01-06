@@ -113,6 +113,7 @@ public class SystemDemo {
 		Runtime r=Runtime.getRuntime();
 		Process p = null;
 		try {
+			//r.exec("notepad.exe RuntimeDemo.java");
 			p = r.exec("open /Applications/iTunes.app");
 			Thread.sleep(5000);
 		} catch (Exception e) {
