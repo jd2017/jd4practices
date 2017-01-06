@@ -23,8 +23,8 @@ public class RecursionFile {
 	@Test
 	public void test(){
 		File file = new File(path);
-		File[] files=file.listFiles();
-		Sop(files.length);
+		showFiles(file,0);
+//		Sop(files.length);
 	}
 	//十进制转为二进制
 	public  void toBin(int num){
