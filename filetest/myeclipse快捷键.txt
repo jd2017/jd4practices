@@ -1,0 +1,302 @@
+-------------------------------------
+MyEclipse 快捷键1(CTRL)
+-------------------------------------
+	Ctrl+1 快速修复
+	Ctrl+D: 删除当前行 
+	Ctrl+Q  定位到最后编辑的地方 
+	Ctrl+L  定位在某行  
+	Ctrl+O  快速显示 OutLine 
+	Ctrl+T  快速显示当前类的继承结构 
+	Ctrl+W  关闭当前Editer 
+	Ctrl+K  快速定位到下一个 
+	Ctrl+E 快速显示当前Editer的下拉列表
+	Ctrl+J  正向增量查找(按下Ctrl+J后,你所输入的每个字母编辑器都提供快速匹配定位到某个单词,如果没有,则在stutes line中显示没有找到了,)    
+	Ctrl+Z 返回到修改前的状态 
+	Ctrl+Y 与上面的操作相反
+	Ctrl+/  注释当前行,再按则取消注释 
+	Ctrl+D删除当前行。
+	Ctrl+Q跳到最后一次的编辑处
+	Ctrl+M切换窗口的大小 
+	Ctrl+I格式化激活的元素Format Active Elements。
+	Ctrl+F6切换到下一个Editor
+	Ctrl+F7切换到下一个Perspective
+	Ctrl+F8切换到下一个View
+	------------------------------------------
+	MyEclipse 快捷键2(CTRL+SHIFT)
+	------------------------------------------
+	Ctrl+Shift+E 显示管理当前打开的所有的View的管理器(可以选择关闭,激活等操作) 
+	Ctrl+Shift+/ 自动注释代码 
+	Ctrl+Shift+\自动取消已经注释的代码 
+	Ctrl+Shift+O 自动引导类包 
+	Ctrl+Shift+J 反向增量查找(和上条相同,只不过是从后往前查) 
+	Ctrl+Shift+F4 关闭所有打开的Editer 
+	Ctrl+Shift+X  把当前选中的文本全部变为小写 
+	Ctrl+Shift+Y  把当前选中的文本全部变为小写 
+	Ctrl+Shift+F  格式化当前代码
+	Ctrl+Shift+M(先把光标放在需导入包的类名上) 作用是加Import语句 
+	Ctrl+Shift+P 定位到对于的匹配符(譬如{}) (从前面定位后面时,光标要在匹配符里面,后面到前面,则反之) 
+	Ctrl+Shift+F格式化文件Format Document。
+	Ctrl+Shift+O作用是缺少的Import语句被加入，多余的Import语句被删除。 
+	Ctrl+Shift+S保存所有未保存的文件。
+	Ctrl+Shift+/ 在代码窗口中是这种/*~*/注释，在JSP文件窗口中是 <!--~-->。 
+	Shift+Ctrl+Enter 在当前行插入空行(原理同上条)
+	-----------------------------------------
+	MyEclipse 快捷键3(ALT)
+	-----------------------------------------
+	Alt+/ 代码助手完成一些代码的插入 ，自动显示提示信息
+	Alt+↓  当前行和下面一行交互位置(特别实用,可以省去先剪切,再粘贴了) 
+	Alt+↑  当前行和上面一行交互位置(同上) 
+	Alt+←  前一个编辑的页面 
+	Alt+→  下一个编辑的页面(当然是针对上面那条来说了) 
+	Alt+Enter 显示当前选择资源(工程,or 文件 or文件)的属性 
+	
+	MyEclipse 快捷键4(ALT+CTRL)
+	 
+	Alt+CTRL+↓ 复制当前行到下一行(复制增加) 
+	Alt+CTRL+↑ 复制当前行到上一行(复制增加)
+	-------------------------------------------
+	MyEclipse 快捷键5(ALT+SHIFT)
+	-------------------------------------------
+	Alt+Shift+R 重命名 
+	Alt+Shift+M 抽取方法
+	Alt+Shift+C 修改函数结构(比较实用,有N个函数调用了这个方法,修改一次搞定) 
+	Alt+Shift+L 抽取本地变量
+	Alt+Shift+F 把Class中的local变量变为field变量
+	Alt+Shift+I 合并变量
+	Alt+Shift+V 移动函数和变量
+	Alt+Shift+Z 重构的后悔药(Undo) Shift+Enter 在当前行的下一行插入空行(这时鼠标可以在当前行的任一位置,不一定是最后) 
+	Alt+Shift+O(或点击工具栏中的Toggle Mark Occurrences按钮) 当点击某个标记时可使本页面中其他地方的此标记黄色凸显，并且窗口的右边框会出现白色的方块，点击此方块会跳到此标记处。 
+	下面的快捷键是重构里面常用的,本人就自己喜欢且常用的整理一下(注:一般重构的快捷键都是Alt+Shift开头的了) 
+	
+	--------------------------------------------
+	MyEclipse 快捷键(6) 
+	--------------------------------------------
+	F2当鼠标放在一个标记处出现Tooltip时候按F2则把鼠标移开时Tooltip还会显示即Show Tooltip Description。 
+	F3跳到声明或定义的地方。 
+	F5单步调试进入函数内部。 
+	F6单步调试不进入函数内部，如果装了金山词霸2006则要把“取词开关”的快捷键改成其他的。 
+	F7由函数内部返回到调用处。 
+	F8一直执行到下一个断点。 
+	
+--------------------------------------------------------------------------------------------------
+Eclipse  大全
+--------------------------------------------------------------------------------------------------
+	
+	Eclipse的编辑功能非常强大，掌握了Eclipse快捷键功能，能够大大提高开发效率。Eclipse中有如下一些和编辑相关的快捷键。
+	1. 【ALT+/】
+	此快捷键为用户编辑的好帮手，能为用户提供内容的辅助，不要为记不全方法和属性名称犯愁，当记不全类、方法和属性的名字时，多体验一下【ALT+/】快捷键带来的好处吧。 
+	2. 【Ctrl+O】
+	 显示类中方法和属性的大纲，能快速定位类的方法和属性，在查找Bug时非常有用。
+	3. 【Ctrl+/】
+	 快速添加注释，能为光标所在行或所选定行快速添加注释或取消注释，在调试的时候可能总会需要注释一些东西或取消注释，现在好了，不需要每行进行重复的注释。
+	4. 【Ctrl+D】
+	 删除当前行，这也是笔者的最爱之一，不用为删除一行而按那么多次的删除键。
+	5. 【Ctrl+M】
+	 窗口最大化和还原，用户在窗口中进行操作时，总会觉得当前窗口小（尤其在编写代码时），现在好了，试试【Ctrl+M】快捷键。
+	查看和定位快捷键
+	在程序中，迅速定位代码的位置，快速找到Bug的所在，是非常不容易的事，Eclipse提供了强大的查找功能，可以利用如下的快捷键帮助完成查找定位的工作。
+	1. 【Ctrl+K】、【Ctrl++Shift+K】
+	 快速向下和向上查找选定的内容，从此不再需要用鼠标单击查找对话框了。
+	2. 【Ctrl+Shift+T】
+	 查找工作空间（Workspace）构建路径中的可找到Java类文件，不要为找不到类而痛苦，而且可以使用“*”、“？”等通配符。
+	3. 【Ctrl+Shift+R】
+	 和【Ctrl+Shift+T】对应，查找工作空间（Workspace）中的所有文件（包括Java文件），也可以使用通配符。
+	4. 【Ctrl+Shift+G】
+	 查找类、方法和属性的引用。这是一个非常实用的快捷键，例如要修改引用某个方法的代码，可以通过【Ctrl+Shift+G】快捷键迅速定位所有引用此方法的位置。
+	5. 【Ctrl+Shift+O】
+	快速生成import，当从网上拷贝一段程序后，不知道如何import进所调用的类，试试【Ctrl+Shift+O】快捷键，一定会有惊喜。
+	6. 【Ctrl+Shift+F】
+	 格式化代码，书写格式规范的代码是每一个程序员的必修之课，当看见某段代码极不顺眼时，选定后按【Ctrl+Shift+F】快捷键可以格式化这段代码，如果不选定代码则默认格式化当前文件（Java文件）。
+	7. 【ALT+Shift+W】
+	 查找当前文件所在项目中的路径，可以快速定位浏览器视图的位置，如果想查找某个文件所在的包时，此快捷键非常有用（特别在比较大的项目中）。
+	8. 【Ctrl+L】
+	 定位到当前编辑器的某一行，对非Java文件也有效。
+	9. 【Alt+←】、【Alt+→】
+	 后退历史记录和前进历史记录，在跟踪代码时非常有用，用户可能查找了几个有关联的地方，但可能记不清楚了，可以通过这两个快捷键定位查找的顺序。
+	10. 【F3】
+	快速定位光标位置的某个类、方法和属性。
+	11. 【F4】
+	 显示类的继承关系，并打开类继承视图。
+	调试快捷键
+	Eclipse中有如下一些和运行调试相关的快捷键。
+	1. 【Ctrl+Shift+B】：在当前行设置断点或取消设置的断点。
+	 2. 【F11】：调试最后一次执行的程序。
+	 3. 【Ctrl+F11】：运行最后一次执行的程序。
+	 4. 【F5】：跟踪到方法中，当程序执行到某方法时，可以按【F5】键跟踪到方法中。
+	 5. 【F6】：单步执行程序。
+	 6. 【F7】：执行完方法，返回到调用此方法的后一条语句。
+	 7. 【F8】：继续执行，到下一个断点或程序结束。
+	常用编辑器快捷键
+	通常文本编辑器都提供了一些和编辑相关的快捷键，在Eclipse中也可以通过这些快捷键进行文本编辑。
+	 1. 【Ctrl+C】：复制。
+	 2. 【Ctrl+X】：剪切。
+	 3. 【Ctrl+V】：粘贴。
+	 4. 【Ctrl+S】：保存文件。
+	 5. 【Ctrl+Z】：撤销。
+	 6. 【Ctrl+Y】：重复。
+	 7. 【Ctrl+F】：查找。
+	其他快捷键
+	Eclipse中还有很多快捷键，无法一一列举，可以通过帮助文档找到它们的使用方式，另外还有几个常用的快捷键如下。
+	 1. 【Ctrl+F6】：切换到下一个编辑器。
+	 2. 【Ctrl+Shift+F6】：切换到上一个编辑器。
+	 3. 【Ctrl+F7】：切换到下一个视图。
+	 4. 【Ctrl+Shift+F7】：切换到上一个视图。
+	 5. 【Ctrl+F8】：切换到下一个透视图。
+	 6. 【Ctrl+Shift+F8】：切换到上一个透视图。
+	Eclipse中快捷键比较多，可以通过帮助文档找到所有快捷键的使用，但要掌握所有快捷键的使用是不可能的，也没有必要，如果花点时间熟悉本节列举的快捷键，
+	--------------------------------------------------------------------------------------------
+	-----------------------------------------------------------------------------------------------
+	1几个最重要的快捷键
+	代码助手:Ctrl+Space（简体中文操作系统是Alt+/）
+	快速修正：Ctrl+1
+	单词补全：Alt+/
+	打开外部Java文档：Shift+F2
+	显示搜索对话框：Ctrl+H
+	快速Outline：Ctrl+O
+	打开资源：Ctrl+Shift+R
+	打开类型：Ctrl+Shift+T
+	显示重构菜单：Alt+Shift+T
+	上一个/下一个光标的位置：Alt+Left/Right
+	上一个/下一个成员（成员对象或成员函数）：Ctrl+Shift+Up/Down
+	选中闭合元素：Alt+Shift+Up/Down/Left/Right
+	删除行：Ctrl+D
+	在当前行上插入一行：Ctrl+Shift+Enter
+	在当前行下插入一行： Shift+Enter
+	上下移动选中的行：Alt+Up/Down
+	
+	组织导入：Ctrl+Shift+O
+	2 定位
+	2.1行内定位
+	行末/行首：End/Home
+	前一个/后一个单词：Ctrl+Right/Left
+	2.2文件内定位
+	跳到某行：Ctrl+L
+	上下滚屏：Ctrl+Up/Down
+	上一个/下一个成员（成员对象或成员函数）：Ctrl+Shift+Up/Down
+	快速Outline：Ctrl+O
+	2.3跨文件定位
+	打开声明：F3
+	打开资源：Ctrl+Shift+R
+	打开类型：Ctrl+Shift+T
+	在workspace中搜索选中元素的声明：Ctrl+G
+	在workspace中搜索选中的文本：Ctrl+Alt+G
+	在workspace中搜索选中元素的引用：Ctrl+Shift+G
+	打开调用层次结构：Ctrl+Alt+H
+	快速层次结构：Ctrl+T
+	反悔：Ctrl+Z
+	2.4其它
+	上一个/下一个光标所在位置：Alt+Left/Right
+	上一个编辑的位置：Ctrl+Q
+	3 选中
+	3.1行内选中
+	选中到行末/行首：Shift+End/Home
+	选中上一个/下一个单词：Ctrl+Shift+Left/Right
+	3.2文件内选中
+	选中闭合元素：Alt+Shift+Up
+	恢复到上一个选中：Alt+Shift+Down
+	选中下一个/上一个元素：Alt+Shift+Right/Left
+	4 定位/选中/操作同时
+	删除行：Ctrl+D
+	删除下一个/上一个单词：Ctrl+Delete/Backspace
+	删除到行末：Ctrl+Shift+Delete
+	在当前行上插入一行：Ctrl+Shift+Enter
+	在当前行下插入一行： Shift+Enter
+	上下移动选中的行：Alt+Up/Down
+	拷贝选中的行：Ctrl+Alt+Up/Down
+	5其它的代码编辑类快捷键
+	保存：Ctrl+S
+	保存所有：Ctrl+Shift+S
+	下一个命中的项（搜索之后）：Ctrl+.
+	注释：Ctrl+/
+	添加导入：Ctrl+Shift+M
+	显示快捷键帮助：Ctrl+Shift+L
+	变为大/小写：Ctrl+Shift+X/Y
+	6 重构
+	显示重构菜单：Alt+Shift+T
+	重构-改变方法签名：Alt+Shift+C
+	重构-移动：Alt+Shift+V
+	重构-重命名：Alt+Shift+R
+	7 编辑器、视图、透视图切换
+	下一个编辑器：Ctrl+F6
+	下一个视图：Ctrl+F7
+	下一个透视图：Ctrl+F8
+	最大化当前视图或编辑器：Ctrl+M
+	激活编辑器：F12
+	8 Debug
+	F5：Step Into（debug）
+	F6：Step over（debug）
+	F7：Step return（debug）
+	F8：Resume（debug）
+	F11：debug上一个应用（debug）
+	9 Up/Down/Right/Left类快捷键
+	Ctrl
+	前一个/后一个单词：Ctrl+Right/Left
+	上下滚屏：Ctrl+Up/Down
+	Alt
+	上一个/下一个光标的位置：Alt+Left/Right
+	上下移动选中的行：Alt+Up/Down
+	Shift
+	选中上一个/下一个字符：Shift+Left/Right
+	选中上一行/下一行（从当前光标位置开始）：Shift+Up/Down
+	Ctrl+Shift
+	上一个/下一个成员（成员对象或成员函数）：Ctrl+Shift+Up/Down
+	选中上一个/下一个单词：Ctrl+Shift+Left/Right
+	Alt+Shift
+	选中闭合元素：Alt+Shift+Up
+	恢复到上一个选中：Alt+Shift+Down
+	选中下一个/上一个元素：Alt+Shift+Right/Left
+	拷贝选中的行：Ctrl+Alt+Up/Down
+	Ctrl+Alt
+	拷贝选中的行：Ctrl+Alt+Up/Down
+	10 F类快捷键
+	F2：显示提示/重命名
+	F3：打开选中元素的声明
+	F4：打开选中元素的类型继承结构
+	F5：刷新
+	F5：Step Into（debug）
+	F6：Step over（debug）
+	F7：Step return（debug）
+	F8：Resume（debug）
+	F11：debug上一个应用（debug）
+	F12：激活编辑器
+	================================================================
+	================================================================
+	MyEclipse使用技巧和快捷键 Eclipse本身很快的，但是加上了myeclipse后，就狂占内存，而且速度狂慢，那如何让Eclipse拖着myeclipse狂飚呢？这里提供一个技巧：取消自动validation
+	 validation有一堆，什么xml、jsp、jsf、js等等，我们没有必要全部都去自动校验一下，只是需要的时候才会手工校验一下，速度立马提升好几个档次！
+	取消方法： windows-->perferences-->myeclipse-->validation
+	 除开Manual下面的复选框全部选中之外，其他全部不选
+	 手工验证方法：
+	 在要验证的文件上，单击鼠标右键-->myeclipse-->run validation
+	程序代码自动排版：Ctrl+Shift+F，会自动把代码进行格式化的排版，非常方便
+	快速执行程序：Ctrl + F11第一次执行时，它会询问您执行模式，设置好后，以后只要按这个热键，它就会快速执行。
+	Ctrl+Shift+/ 加上段注释/**/
+	Ctrl+Shift+\ 取消段注释/**/
+	Ctrl+/ 加上行注释或取消行注释
+	自动汇入所需要的类别：Ctrl+Shift+M Ctrl+Shift+O 好象使用Ctrl+Shift+O 也可以
+	按new Remote Site,Name填 svn , URL填http://subclipse.tigris.org/update,一直next到finished为止
+	MyEclipse 快捷键
+	（1）Ctrl+M切换窗口的大小
+	（2）Ctrl+Q跳到最后一次的编辑处
+	（3）F2当鼠标放在一个标记处出现Tooltip时候按F2则把鼠标移开时Tooltip还会显示即Show Tooltip Description。
+	F3跳到声明或定义的地方。
+	F5单步调试进入函数内部。
+	F6单步调试不进入函数内部，如果装了金山词霸2006则要把“取词开关”的快捷键改成其他的。
+	F7由函数内部返回到调用处。
+	F8一直执行到下一个断点。
+	（4）Ctrl+Pg~对于XML文件是切换代码和图示窗口
+	（5）Ctrl+Alt+I看Java文件中变量的相关信息
+	（6）Ctrl+PgUp对于代码窗口是打开“Show List”下拉框，在此下拉框里显示有最近曾打开的文件
+	（7）Ctrl+/ 在代码窗口中是这种//~注释。
+	Ctrl+Shift+/ 在代码窗口中是这种/*~*/注释，在JSP文件窗口中是<!--~-->。
+	（8）Alt+Shift+O(或点击工具栏中的Toggle Mark Occurrences按钮) 当点击某个标记时可使本页面中其他地方的此标记黄色凸显，并且窗口的右边框会出现白色的方块，点击此方块会跳到此标记处。
+	（9）右击窗口的左边框即加断点的地方选Show Line Numbers可以加行号。
+	（10）Ctrl+I格式化激活的元素Format Active Elements。
+	Ctrl+Shift+F格式化文件Format Document。
+	（11）Ctrl+S保存当前文件。
+	Ctrl+Shift+S保存所有未保存的文件。
+	（12）Ctrl+Shift+M(先把光标放在需导入包的类名上) 作用是加Import语句。
+	Ctrl+Shift+O作用是缺少的Import语句被加入，多余的Import语句被删除。
+	（13）Ctrl+Space提示键入内容即Content Assist，此时要将输入法中Chinese(Simplified)IME-Ime/Nonlme Toggle的快捷键（用于切换英文和其他文字）改成其他的。
+	Ctrl+Shift+Space提示信息即Context Information。
+	（14）双击窗口的左边框可以加断点。
+	（15）Ctrl+D删除当前行
