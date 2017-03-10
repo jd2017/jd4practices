@@ -7,7 +7,7 @@ import cn.com.jd.alog2struc.datastructures.StackX;
 public class StackXTest {
  @Test
  public void test(){
-	 StackX sx = new StackX(4);
+	 StackX sx = new StackX(10);
 	 int index = 0;
 	 while(!sx.isFull()){
 		 sx.push(index++);
