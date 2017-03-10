@@ -11,7 +11,7 @@ class Resoure{
 	boolean bo=false;
 		//	t1,t2
 	public synchronized void setResource(String name){
-		if(bo)
+		if(bo)						//用if时，多线程时两个以上，会出现数据错乱情况； 用while 解决此问题；
 			try{
 				//3，t1(放弃资格)、t2(获得执行权进入  等待 放弃资格)；//6,(t1获取资格)(t2放弃资格)；//12,(t1,放弃资格，t2获取资格，不判断标记执行)
 				wait();}catch(Exception e){}
