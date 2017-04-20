@@ -48,10 +48,10 @@ public class HttpClientUtilTest {
 	}
     public void getRequestTest(int catageoryKey,int index) {  
 //    	int catageoryKey,int ...index
-			String url = "http://"+host+"/xcgj-ws/ws/0.1/debug/push?userId=2651&catageoryKey=10"+catageoryKey+"&type="+index;
+			String url = "http://"+host+"/xcgj-ws/ws/0.1/debug/push?userId=571&catageoryKey=10"+catageoryKey+"&type="+index;
 //        http://10.23.211.68/xcgj-ws/ws/0.1/debug/push?userId=1&catageoryKey=105&type=5
         try {  
-            String str = HttpClientUtil.doGet2(url, "UTF-8");  
+            String str = HttpClientUtil.doGet1(url, "UTF-8");  
             if (str != null) {  
             	logger.info("http Get request result:" + str);  
             } else {  

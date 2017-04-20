@@ -34,12 +34,19 @@ public class SortDemo {
 		 *  insertSort(array,nElems);	//39021
 		 	bubbleSort(array,nElems);	//44896
 			selectSort(array,nElems);  //74932
-		*/
+		
 		long startTime = System.currentTimeMillis();
 			selectSort();
 		long endTime = System.currentTimeMillis();
 		System.out.println(endTime-startTime);
 		outArray();
+		*/
+		int[] arrayA = {3,6,9,200};
+		int[] arrayB = {4,10,12,29,50};
+		int[] arrayC = new int[arrayA.length+arrayB.length];
+		merge(arrayA, arrayA.length, arrayB, arrayB.length, arrayC);
+		outArray(arrayC);
+		
 	}
 	/*
 	 * 插入排序：复制的次数大致等于比较的次数，一次复制与一次交换的时间不同，复制是交换的3倍；
@@ -94,11 +101,42 @@ public class SortDemo {
 		 array[one] = array[two];
 		 array[two] = temp;
 	 }
+	 //print nElements;
 	 public  void outArray(){
 		 for(int i = 0 ;i<nElems;i++){
 			 System.out.print(array[i]+",");
 		 }
 	 }
+	 public void outArray(int[] array){
+		 for(int element:array){
+			 System.out.println(element);
+		 }
+	 }
+	 /*
+	  * 归并排序：
+	  * 	归并两个已经有序的数组A、B，生成第三个数组C；
+	  * 	如果有一数组排完以后是空，就不需要再去比较了；
+	  * 	只要另一个数组中所有剩余的数据项复制到数组C中即可。
+	  * 排序比较：
+	  * 冒泡、插入和选择排序要用O(N^2)时间，而归并排序只要O(N*logN).
+	  * 如果N数目是10000，N^2 就是 100000000，而N*logN只是40000.
+	  * 归并排序的缺点：它需要存储器中有另一个大小等于被排序的数据项目数目的数组。
+	  * 所以，如果有足够的空间，归并排序会是一个很好的选择；
+	  * 
+	  */
+	 public void merge(int[] arrayA,int sizeA,int[] arrayB,int sizeB,int[] arrayC){//merge A and B into C;
+		 int aDex =0; int bDex =0; int cDex=0;
+		 while(aDex<sizeA && bDex<sizeB)		//neither array empty;
+			 if(arrayA[aDex] < arrayB[bDex])
+				 arrayC[cDex++] = arrayA[aDex++];
+			 else
+				 arrayC[cDex++]=arrayB[bDex++];
+		 while(aDex < sizeA)			//arrayB is empty;
+			 arrayC[cDex++]=arrayA[aDex++];
+		 while(bDex < sizeB)			//arrayA is empty;
+			 arrayC[cDex++] = arrayB[bDex++];
+	 }
+	 
 	 /**
 	     * 功能：Java读取txt文件的内容
 	     * 步骤：1：先获得文件句柄
